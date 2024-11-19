@@ -1,0 +1,63 @@
+<section class="min-h-screen flex items-center justify-center bg-zinc-300">
+  <div class="bg-neutral-200 text-white rounded-lg shadow-lg p-8 w-full max-w-md">
+    <div class="flex items-center space-x-2 mb-5">
+      <button onclick="window.history.back()"
+        class="text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-full p-2">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <h1 class="text-2xl font-bold text-black">Creación de Planes</h1>
+    </div>
+
+    <form [formGroup]="planForm" (ngSubmit)="onSubmit()">
+      <!-- Nombre -->
+      <div class="relative z-0 w-full mb-5 group">
+        <input type="text" formControlName="name" id="name"
+          class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-400 focus:outline-none focus:ring-0 focus:border-blue-500 peer resize-none overflow-y-auto"
+          placeholder=" " required />
+        <label for="name"
+          class="absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:translate-y-[-24px] peer-focus:scale-75 peer-focus:text-blue-500">
+          Nombre del Plan
+        </label>
+      </div>
+
+      <!-- Descripción -->
+      <div class="relative z-0 w-full mb-5 group">
+        <textarea formControlName="description" id="description" rows="3"
+          class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-400 focus:outline-none focus:ring-0 focus:border-blue-500 peer resize-none overflow-y-auto"
+          placeholder=" " required></textarea>
+        <label for="description"
+          class="absolute text-sm text-gray-400 duration-300 transform -translate-y-8 scale-75 top-3 -z-10 peer-placeholder-shown:translate-y-3 peer-placeholder-shown:scale-100 peer-focus:translate-y-[-24px] peer-focus:scale-75 peer-focus:text-blue-500">
+          Descripción del plan
+        </label>
+      </div>
+
+      <!-- Foto -->
+      <div class="relative z-0 w-full mb-5 group">
+        <input type="url" formControlName="photo" id="photo"
+          class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-400 focus:outline-none focus:ring-0 focus:border-blue-500 peer"
+          placeholder=" "  />
+        <label for="photo"
+          class="absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:translate-y-[-24px] peer-focus:scale-75 peer-focus:text-blue-500">
+          URL de la Foto
+        </label>
+      </div>
+
+      <!-- Precio -->
+      <div class="relative z-0 w-full mb-5 group">
+        <input type="number" formControlName="price" id="price" step="0.01"
+          class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-400 focus:outline-none focus:ring-0 focus:border-blue-500 peer"
+          placeholder=" " required />
+        <label for="price"
+          class="absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:translate-y-[-24px] peer-focus:scale-75 peer-focus:text-blue-500">
+          Precio del Plan
+        </label>
+      </div>
+
+      <!-- Botón de envío -->
+      <button type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition duration-300">
+        Guardar Plan
+      </button>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+<body>
+
+  <section class="flex items-center justify-center min-h-screen bg-gray-100" id="menu-usuarios">
+    <div class="p-card shadow-lg rounded-xl p-8 bg-white max-w-md w-full">
+      <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">
+        ¿Qué deseas hacer?
+      </h2>
+
+      <div class="flex flex-col gap-4">
+        <button pButton label="Agregar planes" class="p-button p-button-lg p-button-success w-full text-lg" icon="pi pi-plus" routerLink="/planes/create">
+        </button>
+
+        <button pButton label="Lista de planes" class="p-button p-button-lg p-button-info w-full text-lg" icon="pi pi-list"routerLink="/planes/list">
+        </button>
+
+        <button pButton label="Volver" class="p-button p-button-lg p-button-secondary w-full text-lg" icon="pi pi-arrow-left"routerLink="/menu">
+        </button>
+      </div>
+    </div>
+  </section>
+
+</body>

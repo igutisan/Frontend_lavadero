@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body, html {
+  height: 100%;
+  width: 100%; // Asegura que el ancho también sea 100%
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+.card {
+
+
+  cursor: pointer;
+  transition: box-shadow 0.3s, transform 0.3s;
+
+
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);  // Efecto de hover para resaltar la tarjeta
+  }
+  :host {
+    background-color: #f0f0f0;  // Aplicar estilos al contenedor del componente
+  }
+}
+
+// Estilos responsivos para pantallas más pequeñas
+@media (max-width: 1024px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);  // Dos columnas en pantallas medianas
+  }
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    grid-template-columns: 1fr;  // Una columna en pantallas pequeñas
+  }
+}

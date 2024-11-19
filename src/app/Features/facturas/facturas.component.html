@@ -1,0 +1,47 @@
+<div class="bg-gray-200 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
+    <h2 class="text-3xl font-bold text-center text-black mb-8">Factura</h2>
+
+    <table class="table-auto w-full mb-4 border-collapse border border-gray-300">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border border-gray-300 px-4 py-2 text-left">#</th>
+          <th class="border border-gray-300 px-4 py-2 text-left">Cliente</th>
+          <th class="border border-gray-300 px-4 py-2 text-left">N</th>
+          <th class="border border-gray-300 px-4 py-2 text-left">Usuario</th>
+          <th class="border border-gray-300 px-4 py-2 text-left">N</th>
+          <th class="border border-gray-300 px-4 py-2 text-left">Servicio</th>
+          <th class="border border-gray-300 px-4 py-2 text-left">Precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let service of services; let i = index">
+          <td class="border border-gray-300 px-4 py-2">{{ i + 1 }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ service.client.dni }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ service.client.name }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ service.user.dni }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ service.user.name }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ service.plan.name }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ service.plan.price | currency:'COP':'symbol' }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="text-right mb-4">
+      <p class="text-xl font-bold text-black">Total: {{ totalFactura | currency:'COP':'symbol' }}</p>
+    </div>
+
+    <div class="flex justify-end space-x-4">
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        (click)="imprimirFactura()">
+        Imprimir
+      </button>
+      <button
+        class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+        (click)="volverMenu()">
+        Menú
+      </button>
+    </div>
+  </div>
+</div>

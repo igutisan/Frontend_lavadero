@@ -1,0 +1,74 @@
+<div class="container mx-auto p-4">
+  <h2 class="text-2xl font-semibold mb-4">Historial Facturas</h2>
+  <button
+  class="flex items-center bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700 mb-4"
+  routerLink="/menu">
+  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+  </svg>
+  Volver
+</button>
+  <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+    <thead>
+      <tr class="bg-gray-200 text-gray-700">
+        <th class="py-2 px-4 border-b">Factura</th>
+        <th class="py-2 px-4 border-b">Cliente</th>
+        <th class="py-2 px-4 border-b">Fecha</th>
+        <th class="py-2 px-4 border-b">Total</th>
+        <th class="py-2 px-4 border-b">Acciones</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let invoice of receipts" class="hover:bg-gray-100">
+        <td class="py-2 px-4 border-b">{{ invoice.id }}</td>
+        <td class="py-2 px-4 border-b">{{ invoice.dni }}</td>
+        <td class="py-2 px-4 border-b">{{ invoice.date }}</td>
+        <td class="py-2 px-4 border-b">{{ invoice.total }}</td>
+        <td class="py-2 px-4 border-b">
+          <button
+            class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-700"
+            (click)="loadReceipt(invoice.id)"
+            >Detalles</button>
+            <button
+            class="bg-red-400 text-white px-4 py-1 rounded hover:bg-red-700" (click)="deleteReceipt(invoice.id)" >Eliminar</button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p-dialog header="Factura" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" (onHide)="closeModal()">
+  <div *ngIf="receiptDetails">
+    <h2 class="text-center font-bold">Factura</h2>
+    <table class="table-auto w-full border-collapse border border-gray-300">
+      <thead>
+        <tr class="bg-gray-200 text-black">
+          <th class="border border-gray-300 px-4 py-2">#</th>
+          <th class="border border-gray-300 px-4 py-2">Cliente</th>
+          <th class="border border-gray-300 px-4 py-2">N</th>
+          <th class="border border-gray-300 px-4 py-2">Usuario</th>
+          <th class="border border-gray-300 px-4 py-2">N</th>
+          <th class="border border-gray-300 px-4 py-2">Servicio</th>
+          <th class="border border-gray-300 px-4 py-2">Precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detail of receiptDetails; index as i">
+          <td class="border border-gray-300 px-4 py-2">{{ i + 1 }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ detail.dniClient }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ detail.nameClient }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ detail.dniUsuario }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ detail.nameUsuario}}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ detail.nameService }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ detail.total | currency:'COP' }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="text-right font-bold text-lg mt-4">
+      Total: {{ getTotalPrice() | currency:'COP' }}
+    </div>
+  </div>
+</p-dialog>
+

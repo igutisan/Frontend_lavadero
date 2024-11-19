@@ -1,0 +1,110 @@
+<section class="flex items-center justify-center min-h-screen bg-gray-100">
+  <div class="p-card shadow-lg rounded-xl bg-white p-6 w-11/12">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold text-gray-700">Gestión de Clientes</h2>
+      <button pButton label="Agregar" icon="pi pi-plus"
+        class="p-button p-button-success p-button-lg" routerLink="/clientes/create"></button>
+        <button pButton label="Volver al Menú Principal" icon="pi pi-arrow-left"
+        class="p-button p-button-secondary p-button-lg"
+        routerLink="/menu"></button>
+    </div>
+
+
+    <p-table [value]="clientes" responsiveLayout="scroll" class="w-full">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>ID</th>
+          <th>Documento</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Correo</th>
+          <th>Dirección</th>
+          <th>Teléfono</th>
+          <th>Acciones</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-cliente>
+        <tr>
+          <td>{{ cliente.id }}</td>
+          <td>{{ cliente.dni }}</td>
+          <td>{{ cliente.name }}</td>
+          <td>{{ cliente.lastName }}</td>
+          <td>{{ cliente.email }}</td>
+          <td>{{ cliente.address }}</td>
+          <td>{{ cliente.phone }}</td>
+          <td>
+            <div class="flex space-x-2 justify-center">
+              <button pButton icon="pi pi-pencil"
+                class="p-button-rounded p-button-info p-button-sm"  (click)="showEditClientModal(cliente)"></button>
+              <button pButton icon="pi pi-trash"
+                class="p-button-rounded p-button-danger p-button-sm" (click)="deleteClient(cliente.id)"></button>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <p-dialog header="Actualizar Cliente" [(visible)]="displayModal" [modal]="true" [responsive]="true" >
+    <form [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
+      <div class="relative z-0 w-full mb-5 group">
+        <input type="email" formControlName="email" id="floating_email"
+          class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" " required />
+        <label for="floating_email"
+          class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-500">Email</label>
+      </div>
+
+      <div class="relative z-0 w-full mb-5 group">
+        <input type="password" formControlName="password"  (focus)="limpiarCampoPassword()"id="floating_password"
+          class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" " required />
+        <label for="floating_password"
+          class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-500">Password</label>
+      </div>
+
+
+
+      <div class="grid md:grid-cols-2 md:gap-6">
+        <div class="relative z-0 w-full mb-5 group">
+          <input type="text" formControlName="name" id="floating_first_name"
+            class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" " required />
+          <label for="floating_first_name"
+            class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-500">First name</label>
+        </div>
+        <div class="relative z-0 w-full mb-5 group">
+          <input type="text" formControlName="lastName" id="floating_last_name"
+            class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" " required />
+          <label for="floating_last_name"
+            class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-500">Last name</label>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 md:gap-6">
+        <div class="relative z-0 w-full mb-5 group">
+          <input type="tel" formControlName="phone" id="floating_phone"
+            class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" " required />
+          <label for="floating_phone"
+            class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-500">Phone number (3123)</label>
+        </div>
+
+        <div class="relative z-0 w-full mb-5 group">
+          <input type="input" formControlName="dni" id="dni"
+            class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" " required />
+          <label for="dni"
+            class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-500">DNI</label>
+        </div>
+        <div class="relative z-0 w-full mb-5 group">
+          <input type="input" formControlName="address" id="address"
+            class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" " required />
+          <label for="address"
+            class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-500">Address (Ex. calle100)</label>
+        </div>
+      </div>
+
+      <div class="flex justify-end mt-6">
+        <button type="submit" class="px-4 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded">Actualizar</button>
+        <button type="button" (click)="displayModal = false" class="px-4 py-2 ml-2 text-gray-800 bg-gray-300 hover:bg-gray-400 rounded">Cancelar</button>
+      </div>
+    </form>
+  </p-dialog>
+</section>
+

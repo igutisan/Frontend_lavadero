@@ -1,0 +1,52 @@
+<form [formGroup]="serviceForm">
+  <div class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+      <h2 class="text-3xl font-bold text-center mb-8 text-black">Servicios</h2>
+
+      <!-- Dropdown para Clientes -->
+      <div class="mb-4">
+        <label class="block text-black text-sm font-medium mb-2" for="idClient">Clientes</label>
+        <select formControlName="idClient" class="w-full p-2 border border-gray-300 rounded">
+          <option *ngFor="let client of clients" [value]="client.id">
+            {{ client.dni }} {{ client.name }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Dropdown para Usuarios -->
+      <div class="mb-4">
+        <label class="block text-black text-sm font-medium mb-2" for="idUser">Usuarios</label>
+        <select formControlName="idUser" class="w-full p-2 border border-gray-300 rounded">
+          <option *ngFor="let user of users" [value]="user.id">
+            {{ user.dni }} {{ user.name }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Dropdown para Planes -->
+      <div class="mb-4">
+        <label class="block text-black text-sm font-medium mb-2" for="idPlan">Planes</label>
+        <select formControlName="idPlan" class="w-full p-2 border border-gray-300 rounded">
+          <option *ngFor="let plan of plans" [value]="plan.id">
+            {{ plan.name }} {{ plan.price }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Botones -->
+      <div class="flex justify-around">
+        <button type="button" (click)="realizarServicio()"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
+          Realizar
+        </button>
+
+        <button type="button" (click)="generarFactura()"
+                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" routerLink="servicios/factura">
+          Generar Factura
+        </button>
+
+        <button type="button" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"  routerLink="/menu" >Menú</button>
+      </div>
+    </div>
+  </div>
+</form>

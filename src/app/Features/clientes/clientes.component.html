@@ -1,0 +1,89 @@
+<section class="min-h-screen flex items-center justify-center bg-zinc-300">
+  <div class="bg-neutral-200 text-white rounded-lg shadow-lg p-8 w-full max-w-md">
+    <div class="flex items-center justify-between mb-5">
+      <div class="flex items-center space-x-2">
+        <button onclick="window.history.back()"
+          class="text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-full p-2">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="text-2xl font-bold text-gray-200">Creación de Usuarios</h1>
+      </div>
+    </div>
+    <h1 class="text-3xl font-bold text-center text-gray-400 mb-10">Creación de Clientes</h1>
+
+    <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+
+      <div class="relative z-0 w-full mb-5 group">
+        <input type="email" formControlName="email" id="floating_email"
+          class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" " required />
+        <label for="floating_email"
+          class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-500">Email</label>
+      </div>
+
+      <div class="relative z-0 w-full mb-5 group">
+        <input type="password" formControlName="password" id="floating_password"
+          class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" " required />
+        <label for="floating_password"
+          class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-500">Password</label>
+      </div>
+
+      <div class="relative z-0 w-full mb-5 group">
+        <input type="password" formControlName="confirmPassword" id="floating_repeat_password"
+          class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" " required />
+        <label for="floating_repeat_password"
+          class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-500">Confirmar contraseña</label>
+
+        <!-- Mensaje de error -->
+        <div *ngIf="clientForm.hasError('notMatching') && clientForm.get('confirmPassword')?.touched" class="mt-1 text-red-500 text-sm">
+          <span>Las contraseñas no coinciden</span>
+        </div>
+      </div>
+
+
+
+
+      <div class="grid md:grid-cols-2 md:gap-6">
+        <div class="relative z-0 w-full mb-5 group">
+          <input type="text" formControlName="name" id="floating_first_name"
+            class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" " required />
+          <label for="floating_first_name"
+            class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-500">First name</label>
+        </div>
+        <div class="relative z-0 w-full mb-5 group">
+          <input type="text" formControlName="lastName" id="floating_last_name"
+            class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" " required />
+          <label for="floating_last_name"
+            class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-500">Last name</label>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 md:gap-6">
+        <div class="relative z-0 w-full mb-5 group">
+          <input type="tel" formControlName="phone" id="floating_phone"
+            class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" " required />
+          <label for="floating_phone"
+            class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-500">Phone number (3123)</label>
+        </div>
+
+        <div class="relative z-0 w-full mb-5 group">
+          <input type="input" formControlName="dni" id="dni"
+            class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" " required />
+          <label for="dni"
+            class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-500">DNI</label>
+        </div>
+        <div class="relative z-0 w-full mb-5 group">
+          <input type="input" formControlName="address" id="address"
+            class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" " required />
+          <label for="floating_phone"
+            class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-500">address (Ex. calle100)</label>
+        </div>
+      </div>
+
+
+      <button type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition duration-300">
+        Submit
+      </button>
+    </form>
+  </div>
+</section>

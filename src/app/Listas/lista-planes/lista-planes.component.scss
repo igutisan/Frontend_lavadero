@@ -1,0 +1,9 @@
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Sombra más pronunciada al pasar el ratón */
+.shadow-lg:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}

@@ -1,0 +1,60 @@
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <section class="w-full max-w-6xl p-8">
+    <h1 class="text-4xl font-bold text-center mb-10">Menú principal</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <a [routerLink]="['/menu/usuarios']">
+        <div class="card bg-white border rounded-lg shadow-md p-6 flex flex-col items-center cursor-pointer hover:shadow-lg transition">
+          <i class="fa fa-users fa-3x text-blue-500"></i>
+          <h3 class="text-xl font-semibold mt-4">Usuarios</h3>
+          <p class="text-gray-500">Gestiona los usuarios del sistema</p>
+        </div>
+      </a>
+
+      <a [routerLink]="['/menu/clientes']">
+      <div class="card bg-white border rounded-lg shadow-md p-6 flex flex-col items-center cursor-pointer hover:shadow-lg transition"
+          >
+        <i class="fa fa-user-friends fa-3x text-blue-500"></i>
+        <h3 class="text-xl font-semibold mt-4">Clientes</h3>
+        <p class="text-gray-500">Gestiona tus clientes</p>
+      </div>
+      </a>
+
+
+      <div class="card bg-white border rounded-lg shadow-md p-6 flex flex-col items-center cursor-pointer hover:shadow-lg transition"
+           routerLink="/servicios/create">
+        <i class="fa fa-concierge-bell fa-3x text-blue-500"></i>
+        <h3 class="text-xl font-semibold mt-4">Servicios</h3>
+        <p class="text-gray-500">Consulta y gestiona los servicios</p>
+      </div>
+
+
+
+      <div class="card bg-white border rounded-lg shadow-md p-6 flex flex-col items-center cursor-pointer hover:shadow-lg transition"
+           routerLink="/menu/planes">
+        <i class="fa fa-calendar-alt fa-3x text-blue-500"></i>
+        <h3 class="text-xl font-semibold mt-4">Planes</h3>
+        <p class="text-gray-500">Configura los planes del lavadero</p>
+      </div>
+
+
+
+      <div class="card bg-white border rounded-lg shadow-md p-6 flex flex-col items-center cursor-pointer hover:shadow-lg transition"
+           routerLink="/facturas/list">
+        <i class="fa fa-file-invoice fa-3x text-blue-500"></i>
+        <h3 class="text-xl font-semibold mt-4">Facturas</h3>
+        <p class="text-gray-500">Historial de facturas</p>
+      </div>
+
+
+
+      <div class="card bg-white border rounded-lg shadow-md p-6 flex flex-col items-center cursor-pointer hover:shadow-lg transition"
+           routerLink="/citas/list">
+        <i class="fa fa-calendar-check fa-3x text-blue-500"></i>
+        <h3 class="text-xl font-semibold mt-4">Citas</h3>
+        <p class="text-gray-500">Gestiona las citas programadas</p>
+      </div>
+
+    </div>
+  </section>
+</body>
