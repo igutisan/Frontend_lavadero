@@ -10,7 +10,7 @@ import { tap } from 'rxjs/operators';
 })
 export class ServiceService {
 
-  API_URL: string='http://localhost:8080/api';
+  API_URL: string='https://lavadero-back.onrender.com/api';
 
  private _refresh$ = new Subject<void>();
 

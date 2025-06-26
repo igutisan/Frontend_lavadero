@@ -15,7 +15,7 @@ interface Appointment {
   providedIn: 'root'
 })
 export class AppointmentsService {
-  API_URL: string='http://localhost:8080/api/appoint';
+  API_URL: string='https://lavadero-back.onrender.com/api/appoint';
   private _refresh$ = new Subject<void>();
 
   constructor(private httpClient: HttpClient) { }

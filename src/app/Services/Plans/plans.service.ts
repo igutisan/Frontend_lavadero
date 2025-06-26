@@ -21,7 +21,7 @@ interface Plan {
 })
 export class PlansService {
 
-  API_URL: string='http://localhost:8080/api/plans';
+  API_URL: string='https://lavadero-back.onrender.com/api/plans';
 
  private _refresh$ = new Subject<void>();
 

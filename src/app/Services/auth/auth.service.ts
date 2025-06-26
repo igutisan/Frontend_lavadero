@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  private LOGIN_URL='http://localhost:8080/api/login';
+  private LOGIN_URL='https://lavadero-back.onrender.com/api/login';
   private tokenKey = 'authToken';
 
 

@@ -17,7 +17,7 @@ interface ReceiptHistory {
 })
 export class ReceiptsService {
 
-  API_URL: string='http://localhost:8080/api';
+  API_URL: string='https://lavadero-back.onrender.com/api';
 
   private _refresh$ = new Subject<void>();
 

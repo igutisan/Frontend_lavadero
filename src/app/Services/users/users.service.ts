@@ -21,7 +21,7 @@ interface User {
 export class UsersService {
 
 
-  API_URL: string='http://localhost:8080/api/users';
+  API_URL: string='https://lavadero-back.onrender.com/api/users';
 
   private _refresh$ = new Subject<void>();
 
