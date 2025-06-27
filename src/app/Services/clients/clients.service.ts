@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 interface Client {
   email: string;
@@ -20,7 +21,7 @@ interface Client {
   providedIn: 'root'
 })
 export class ClientsService {
-  API_URL: string='https://lavadero-back.onrender.com/api/clients';
+  API_URL: string = `${environment.apiUrl}/clients`;
 
  private _refresh$ = new Subject<void>();
 

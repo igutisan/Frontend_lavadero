@@ -2,13 +2,14 @@ import { Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private LOGIN_URL='https://lavadero-back.onrender.com/api/login';
+  private LOGIN_URL = `${environment.apiUrl}/login`;
   private tokenKey = 'authToken';
 
 

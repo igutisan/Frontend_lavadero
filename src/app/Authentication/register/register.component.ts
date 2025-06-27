@@ -51,7 +51,6 @@ console.log(this.clientForm.value);
       try {
         const response = await firstValueFrom(this.client.createClient(this.clientForm.value));
         this.toastr.success('Usuario registrado exitosamente!', '¡Éxito!');
-        console.log('User created successfully', response);
         this.router.navigate(['/login'])
       } catch (error) {
         console.error('Error creating user', error);

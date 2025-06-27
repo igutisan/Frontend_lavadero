@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject, tap } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 
 interface Appointment {
@@ -15,7 +16,7 @@ interface Appointment {
   providedIn: 'root'
 })
 export class AppointmentsService {
-  API_URL: string='https://lavadero-back.onrender.com/api/appoint';
+  API_URL: string = `${environment.apiUrl}/appoint`;
   private _refresh$ = new Subject<void>();
 
   constructor(private httpClient: HttpClient) { }

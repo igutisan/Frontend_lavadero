@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable, Subject, tap } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 
 interface ReceiptHistory {
@@ -17,7 +18,7 @@ interface ReceiptHistory {
 })
 export class ReceiptsService {
 
-  API_URL: string='https://lavadero-back.onrender.com/api';
+  API_URL: string = environment.apiUrl;
 
   private _refresh$ = new Subject<void>();
 
